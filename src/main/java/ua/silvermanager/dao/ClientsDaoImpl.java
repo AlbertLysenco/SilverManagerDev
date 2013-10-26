@@ -47,7 +47,7 @@ public class ClientsDaoImpl implements ClientsDao{
 
     @Transactional (readOnly = true)
     public Clients findClientById(int id) {
-        return (Clients) sessionFactory.getCurrentSession().getNamedQuery("Clients.findByClientId").setParameter("id", id).uniqueResult();
+        return (Clients) sessionFactory.getCurrentSession().getNamedQuery("Clients.findByClientId").setParameter("clientId", id).uniqueResult();
     }
     
     
