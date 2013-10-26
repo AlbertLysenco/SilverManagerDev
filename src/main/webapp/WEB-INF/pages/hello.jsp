@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
     <body>
+        <p>hello.jsp</p>
+        <a href="clients">Show all clients</a>
         <h1>${message}</h1>
 
         <!--            <table border="1">

@@ -16,5 +16,5 @@ import ua.silvermanager.entities.Clients;
 public interface ClientsDao {
     public List<Clients> findAll();
     public List<Clients> findAllWhithDeatails();
-    public List<Clients> findClientById(int id);
+    public Clients findClientById(int id);
 }
