@@ -14,5 +14,20 @@
     <body>
         <h1>Client</h1>
         <p>${id}</p>
+
+        <table border="1">
+            <tr>
+                <th>ИД клиента</th>
+                <th>Имя клиента</th>
+                <th>Имя директора</th> 
+            </tr>
+            
+                <td>${client.getClientId()}</td>
+                <td>${client.getClientFullName()}</td>
+                <td>${client.getClientDirName()}</td>
+                
+            
+
+        </table>
     </body>
 </html>
