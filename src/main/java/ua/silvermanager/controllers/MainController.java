@@ -14,18 +14,13 @@ import ua.silvermanager.dao.ClientsDaoImpl;
 import ua.silvermanager.entities.Clients;
 
 @Controller
+@RequestMapping("/clients")
 public class MainController {
         
         @Autowired
         private  ClientsDao clientsDao;
         
-        @RequestMapping (value = {"/"})
-        public ModelAndView view(){
-            System.out.println("view()");
-            return new ModelAndView("hello");
-        }
-        
-        @RequestMapping (value = {"clients"})
+        @RequestMapping (method = RequestMethod.GET)
         public ModelAndView showClientList(ModelMap model){
             List<Clients> list = clientsDao.findAllWhithDeatails();
             model.addAttribute("clientlist", list);

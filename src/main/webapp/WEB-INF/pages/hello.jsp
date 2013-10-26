@@ -2,9 +2,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <head>
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+    </head>
     <body>
         <p>hello.jsp</p>
-        <a href="clients">Show all clients</a>
+        <a href="${contextPath}/clients">Show all clients</a>
         <h1>${message}</h1>
 
         <!--            <table border="1">

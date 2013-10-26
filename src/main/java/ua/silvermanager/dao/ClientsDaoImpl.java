@@ -9,6 +9,7 @@ package ua.silvermanager.dao;
 import java.util.List;
 import javax.annotation.Resource;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,17 +24,8 @@ import ua.silvermanager.entities.Clients;
 @Transactional
 public class ClientsDaoImpl implements ClientsDao{
     
-    private SessionFactory sessionFactory;
-
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-    
-    @Resource (name = "sessionFactory")
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-    
+    @Autowired
+    private SessionFactory sessionFactory;    
     
     @Transactional (readOnly = true)
     public List<Clients> findAll() {
