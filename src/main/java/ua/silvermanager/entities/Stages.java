@@ -5,7 +5,7 @@
  */
 
 package ua.silvermanager.entities;
-
+//ыыыы
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
