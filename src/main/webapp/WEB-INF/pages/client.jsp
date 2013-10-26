@@ -21,13 +21,9 @@
                 <th>Имя клиента</th>
                 <th>Имя директора</th> 
             </tr>
-            
                 <td>${client.getClientId()}</td>
                 <td>${client.getClientFullName()}</td>
                 <td>${client.getClientDirName()}</td>
-                
-            
-
         </table>
     </body>
 </html>
