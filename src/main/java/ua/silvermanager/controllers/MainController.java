@@ -32,7 +32,8 @@ public class MainController {
         public ModelAndView showOtherClient(ModelMap model, @RequestParam(value = "id") int id){
             model.addAttribute("id", id);
             System.out.println("showOther");
-//            Clients client = clientsDao.findClientById(id);
+            Clients client = clientsDao.findClientById(id);
+            model.addAttribute("client", client);
             return new ModelAndView("client");
         }
         
