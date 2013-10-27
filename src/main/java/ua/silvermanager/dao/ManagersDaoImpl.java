@@ -7,6 +7,7 @@ package ua.silvermanager.dao;
 
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,14 +27,20 @@ public class ManagersDaoImpl implements ManagersDao {
     @Transactional(readOnly = true)
     @Override
     public List<Managers> findAll() {
-        return (List<Managers>) sessionFactory.getCurrentSession().createCriteria(Managers.class).list();
+        Session openSession = sessionFactory.openSession();
+        List<Managers> list = (List<Managers>) openSession.createCriteria(Managers.class).list();
+        openSession.close();
+        return list;
     }
 
     @Transactional(readOnly = true)
     @Override
     public Managers findManagerById(int id) {
-        return (Managers) sessionFactory.getCurrentSession().getNamedQuery("Managers.findByManagerId")
+        Session openSession = sessionFactory.openSession();
+        Managers manager = (Managers) openSession.getNamedQuery("Managers.findByManagerId")
                 .setParameter("managerId", id).list().get(0);
+        openSession.close();
+        return manager;
     }
 
 }

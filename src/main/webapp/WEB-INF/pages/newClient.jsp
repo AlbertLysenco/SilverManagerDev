@@ -5,9 +5,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
         <title>JSP Page</title>
     </head>
     <body>
+        <a href="${contextPath}">Hello page</a>
+        <br/><br/>
         <h1>Please Create New Client!</h1>
         <br/>
         <form:form method="POST">
@@ -62,6 +65,7 @@
                 </tr>
 
                 <tr>                    
+                    <span>("ON" or "OFF")</span><br/>
                     <td>Client Status : </td>
                     <td><form:input path="clientStatus"/></td>
                     <td><form:errors path="clientStatus"/></td>

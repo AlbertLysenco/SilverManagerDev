@@ -10,11 +10,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
         <title>JSP Page</title>
     </head>
     <body>
         <h1>Client list</h1>
-
+        <a href="${contextPath}">Hello page</a>
+        <br/><br/>
         <c:forEach var="clientlist" items="${clientlist}">
             <ul>
                 <li><a href="client?id=${clientlist.getClientId()}">${clientlist.getClientFullName()}</a></li>

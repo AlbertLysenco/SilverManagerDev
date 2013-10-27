@@ -7,6 +7,7 @@ package ua.silvermanager.dao;
 
 import java.util.List;
 import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,14 +27,20 @@ public class AdressesDaoImpl implements AdressesDao {
     @Transactional(readOnly = true)
     @Override
     public List<Adresses> findAll() {
-        return (List<Adresses>) sessionFactory.getCurrentSession().createCriteria(Adresses.class).list();
+        Session openSession = sessionFactory.openSession();
+        List<Adresses> list = (List<Adresses>) openSession.createCriteria(Adresses.class).list();
+        openSession.close();
+        return list;
     }
 
     @Transactional(readOnly = true)
     @Override
     public Adresses findAdressById(int id) {
-        return (Adresses) sessionFactory.getCurrentSession().getNamedQuery("Adresses.findByAdressId")
+        Session openSession = sessionFactory.openSession();
+        Adresses adress = (Adresses) openSession.getNamedQuery("Adresses.findByAdressId")
                 .setParameter("adressId", id).list().get(0);
+        openSession.close();
+        return adress;
     }
 
 }
