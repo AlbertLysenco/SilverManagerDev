@@ -7,6 +7,7 @@
     </head>
     <body>
         <p>hello.jsp</p>
-        <a href="${contextPath}/clients">Show all clients</a>
+        <a href="${contextPath}/clients">Show all clients</a><br/><br/>
+        <a href="${contextPath}/new/client">ADD New Client</a>
     </body>
 </html>

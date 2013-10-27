@@ -69,13 +69,19 @@
 
                 <tr>                    
                     <td>Client Date On : </td>
-                    <td><form:input path="clientDateOn"/></td>
+                    <td>
+                        <span>(yyyy/dd/mm)</span><br/>
+                        <form:input path="clientDateOn"/>
+                    </td>
                     <td><form:errors path="clientDateOn"/></td>
                 </tr>
 
                 <tr>                   
                     <td>Client Date Off : </td>
-                    <td><form:input path="clientDateOff" id="date"/></td>
+                    <td>
+                        <span>(yyyy/dd/mm)</span><br/>
+                        <form:input path="clientDateOff" id="date"/>
+                    </td>
                     <td><form:errors path="clientDateOff"/></td>
                 </tr>
 
@@ -91,9 +97,9 @@
                     <td><form:errors path="serviceId"/></td>
                 </tr>
                 <tr>
-                    <td><form:button value="ADD"/></td>
-                </tr>
-            </table>
+                    <td><form:button>ADD</form:button></td>
+                    </tr>
+                </table>
         </form:form>
     </body>
 </html>
