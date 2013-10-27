@@ -64,10 +64,12 @@
                     <td><form:errors path="managerId"/></td>
                 </tr>
 
-                <tr>                    
-                    <span>("ON" or "OFF")</span><br/>
+                <tr>
                     <td>Client Status : </td>
-                    <td><form:input path="clientStatus"/></td>
+                    <td>
+                        <span>("ON" or "OFF")</span><br/>
+                        <form:input path="clientStatus"/>
+                    </td>
                     <td><form:errors path="clientStatus"/></td>
                 </tr>
 
