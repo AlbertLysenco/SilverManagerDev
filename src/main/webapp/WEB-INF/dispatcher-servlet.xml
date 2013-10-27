@@ -12,9 +12,11 @@
     <mvc:annotation-driven />
     <context:component-scan base-package="ua.silvermanager"/>
     <context:component-scan base-package="ua.silvermanager.controllers"/>
+    <context:component-scan base-package="ua.silvermanager.validators"/>
+    <context:component-scan base-package="ua.silvermanager.propertyEditors"/>
+
 
     <import resource="data.xml"/>
-    
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>

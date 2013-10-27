@@ -19,8 +19,7 @@ import ua.silvermanager.entities.Clients;
  *
  * @author albert
  */
-@Service ("clientsDao")
-@Repository 
+@Repository ("clientsDao")
 @Transactional
 public class ClientsDaoImpl implements ClientsDao{
     
@@ -28,16 +27,19 @@ public class ClientsDaoImpl implements ClientsDao{
     private SessionFactory sessionFactory;    
     
     @Transactional (readOnly = true)
+    @Override
     public List<Clients> findAll() {
         return sessionFactory.getCurrentSession().createQuery("from Clients").list();
     }
 
     @Transactional (readOnly = true)
+    @Override
     public List<Clients> findAllWhithDeatails() {
         return sessionFactory.getCurrentSession().getNamedQuery("Clients.findAllWhithDetails").list();
     }
 
     @Transactional (readOnly = true)
+    @Override
     public Clients findClientById(int id) {
         return (Clients) sessionFactory.getCurrentSession().getNamedQuery("Clients.findByClientId").setParameter("clientId", id).uniqueResult();
     }
