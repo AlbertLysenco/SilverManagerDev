@@ -12,7 +12,7 @@ import ua.silvermanager.dao.ClientsDao;
 import ua.silvermanager.dao.ClientsDaoImpl;
 import ua.silvermanager.entities.Clients;
 
-//TEST
+
 @Controller
 @RequestMapping("/")
 public class HelloController {
