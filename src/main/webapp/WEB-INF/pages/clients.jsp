@@ -59,7 +59,7 @@
         </div>
         <div class="container_12">
             <div class="grid_2" id="bodylist">
-                <h1>Client list</h1>
+                <h1>Клиенты:</h1>
                 <!--<a href="${contextPath}">Hello page</a>-->
                 <c:forEach var="clientlist" items="${clientlist}">
                     <ul>
@@ -68,7 +68,7 @@
                 </c:forEach>
             </div>
             <div class="grid_9" id="clientinfo">
-                <h1>Client information:</h1>
+                <h1>Информация по клиенту:</h1>
                 
             </div>
             <div class="clear"></div>

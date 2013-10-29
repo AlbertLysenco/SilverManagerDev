@@ -29,7 +29,7 @@ public class MainController {
     public ModelAndView showClientList(ModelMap model) {
         List<Clients> list = clientsDao.findAllWhithDeatails();
         model.addAttribute("clientlist", list);
-        System.out.println("showClient");
+//        System.out.println("showClient");
         return new ModelAndView("clients");
     }
 
@@ -38,7 +38,7 @@ public class MainController {
         List<Clients> list = clientsDao.findAllWhithDeatails();
         model.addAttribute("clientlist", list);
 //        model.addAttribute("id", id);
-        System.out.println("showOther");
+//        System.out.println("showOther");
         Clients client = clientsDao.findClientById(id);
         model.addAttribute("client", client);
     }
