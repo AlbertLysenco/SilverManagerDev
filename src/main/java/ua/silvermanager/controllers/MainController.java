@@ -35,7 +35,9 @@ public class MainController {
 
     @RequestMapping(value = {"client{id}"})
     public void showOtherClient(ModelMap model, @RequestParam(value = "id") int id) {
-        model.addAttribute("id", id);
+        List<Clients> list = clientsDao.findAllWhithDeatails();
+        model.addAttribute("clientlist", list);
+//        model.addAttribute("id", id);
         System.out.println("showOther");
         Clients client = clientsDao.findClientById(id);
         model.addAttribute("client", client);
