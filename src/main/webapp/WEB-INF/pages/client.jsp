@@ -63,7 +63,7 @@
                 <!--<a href="${contextPath}">Hello page</a>-->
                 <c:forEach var="clientlist" items="${clientlist}">
                     <ul>
-                        <li><a href="#" onclick="showClientInfo(${clientlist.getClientId()})">${clientlist.getClientFullName()}</a></li>
+                        <li><a href="${contextPath}/client?id=${clientlist.getClientId()}" >${clientlist.getClientFullName()}</a></li>
                     </ul>
                 </c:forEach>
             </div>
