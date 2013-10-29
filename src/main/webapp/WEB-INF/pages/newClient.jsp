@@ -11,6 +11,8 @@
     <body>
         <a href="${contextPath}">Hello page</a>
         <br/><br/>
+        <%@include file="segments/chooseOperationButtons.jspf" %>
+        <br/><br/>
         <h1>Please Create New Client!</h1>
         <br/>
         <form:form method="POST">

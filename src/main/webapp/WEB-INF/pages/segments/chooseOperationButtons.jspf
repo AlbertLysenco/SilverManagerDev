@@ -1,0 +1,5 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="windows-1251" %>
+        <button >Create</button>
+        <button >Update (currently not working!)</button>
+        <button >Delete (currently not working!)</button>

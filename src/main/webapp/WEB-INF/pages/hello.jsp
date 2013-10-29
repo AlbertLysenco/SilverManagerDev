@@ -8,6 +8,6 @@
     <body>
         <p>hello.jsp</p>
         <a href="${contextPath}/clients">Show all clients</a><br/><br/>
-        <a href="${contextPath}/new/client">ADD New Client</a>
+        <a href="${contextPath}/crud/client">ADD New Client</a>
     </body>
 </html>

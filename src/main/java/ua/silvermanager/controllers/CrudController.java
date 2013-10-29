@@ -40,7 +40,7 @@ import ua.silvermanager.propertyEditors.StageEditos;
  * @author artem
  */
 @Controller
-@RequestMapping("/new")
+@RequestMapping("/crud")
 public class CrudController {
 
     @Autowired
@@ -93,7 +93,6 @@ public class CrudController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/client")
     public ModelAndView newEmptyClient() {
-
         return new ModelAndView("newClient", "command", new Clients());
     }
 
