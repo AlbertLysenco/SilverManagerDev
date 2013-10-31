@@ -40,7 +40,7 @@ import ua.silvermanager.propertyEditors.StageEditos;
  * @author artem
  */
 @Controller
-@RequestMapping("/crud")
+@RequestMapping("/new")
 public class CrudController {
 
     @Autowired
