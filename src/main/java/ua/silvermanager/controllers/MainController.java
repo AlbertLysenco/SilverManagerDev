@@ -22,7 +22,6 @@ public class MainController {
     public ModelAndView showClientList(ModelMap model) {
         List<Clients> list = clientsDao.findAllWhithDeatails();
         model.addAttribute("clientlist", list);
-//        System.out.println("showClient");
         return new ModelAndView("clients");
     }
 

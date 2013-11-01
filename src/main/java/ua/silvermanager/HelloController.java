@@ -12,23 +12,29 @@ import ua.silvermanager.dao.ClientsDao;
 import ua.silvermanager.dao.ClientsDaoImpl;
 import ua.silvermanager.entities.Clients;
 
-
 @Controller
 @RequestMapping("/")
 public class HelloController {
-        
-        @Autowired
-        private  ClientsDao clientsDao;
-        
-	@RequestMapping(method = RequestMethod.GET, value = "/*")
-	public ModelAndView printWelcome(ModelMap model) {
-//                GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-//                context.load("classpath:WEB-INF/mvc-dispatcher-servlet.xml");
-//                context.refresh();
-                List<Clients> list = clientsDao.findAllWhithDeatails();
-                ModelAndView modelAndView = new ModelAndView("hello");
-                model.addAttribute("list", list);
-		model.addAttribute("message", "Hello world!");
-		return modelAndView;
-	}
+
+    @Autowired
+    private ClientsDao clientsDao;
+
+    @RequestMapping(method = RequestMethod.GET, value = "/*")
+    public ModelAndView printWelcome(ModelMap model) {
+        List<Clients> list = clientsDao.findAllWhithDeatails();
+        ModelAndView modelAndView = new ModelAndView("hello");
+        model.addAttribute("list", list);
+        model.addAttribute("message", "Hello world!");
+        return modelAndView;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "logout")
+    public String logout() {
+        return "login";
+    }
 }

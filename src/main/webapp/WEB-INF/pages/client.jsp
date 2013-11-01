@@ -28,6 +28,8 @@
         <title>Client info page</title>
     </head>
     <body>
+        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+        <br/><br/>
         <div id="header">
             <ul id="navbar">
                 <li><a href="#">Клиент</a>

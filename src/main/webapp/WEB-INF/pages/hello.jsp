@@ -6,6 +6,8 @@
         <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
     </head>
     <body>
+        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+        <br/><br/>
         <p>hello.jsp</p>
         <a href="${contextPath}/clients">Show all clients</a><br/><br/>
         <a href="${contextPath}/new/client">ADD New Client</a><br/><br/>

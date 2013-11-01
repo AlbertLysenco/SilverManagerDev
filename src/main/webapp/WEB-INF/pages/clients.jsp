@@ -28,6 +28,8 @@
         <title>Client list</title>
     </head>
     <body>
+        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+        <br/><br/>
         <div id="header">
             <ul id="navbar">
                 <li><a href="#">Клиент</a>
@@ -69,7 +71,7 @@
             </div>
             <div class="grid_9" id="clientinfo">
                 <h1>Информация по клиенту:</h1>
-                
+
             </div>
             <div class="clear"></div>
         </div>

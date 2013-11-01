@@ -9,6 +9,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
+        <br/><br/>
         <a href="${contextPath}">Hello page</a>
         <br/><br/>
         <%@include file="segments/chooseOperationButtons.jspf" %>
