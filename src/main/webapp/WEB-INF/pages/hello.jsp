@@ -8,9 +8,9 @@
     <body>
         <a href="<c:url value="/j_spring_security_logout" />" > Logout</a>
         <br/><br/>
-        <p>hello.jsp</p>
+        <h1>hello.jsp</h1>
         <a href="${contextPath}/clients">Show all clients</a><br/><br/>
-        <a href="${contextPath}/new/client">ADD New Client</a><br/><br/>
+        <a href="${contextPath}/new/client">Create Edit Delete or Serach Client!</a><br/><br/>
         <a href="${contextPath}/adminpage">Test Admin Page</a>
     </body>
 </html>

@@ -13,12 +13,17 @@
         <br/><br/>
         <a href="${contextPath}">Hello page</a>
         <br/><br/>
-        <%@include file="segments/chooseOperationButtons.jspf" %>
-        <br/><br/>
-        <h1>Please Create New Client!</h1>
+        <h1>Please choose operation for your Client!</h1>
+        <h2>Searching works by ID !!</h2>
         <br/>
         <form:form method="POST">
             <table>
+
+                <tr>                   
+                    <td>Client ID : </td>
+                    <td><form:input path="clientId"/></td>
+                    <td><form:errors path="clientId"/></td>
+                </tr>
 
                 <tr>                   
                     <td>Client Full Name : </td>
@@ -107,9 +112,14 @@
                     <td><form:errors path="serviceId"/></td>
                 </tr>
                 <tr>
-                    <td><form:button>ADD</form:button></td>
-                    </tr>
-                </table>
+                    <td>
+                        <input type="submit" name="operation" value="add"/>
+                        <input type="submit" name="operation" value="edit"/>
+                        <input type="submit" name="operation" value="delete"/>
+                        <input type="submit" name="operation" value="search"/>
+                    </td>
+                </tr>
+            </table>
         </form:form>
     </body>
 </html>

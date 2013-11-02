@@ -14,4 +14,10 @@ import ua.silvermanager.entities.Clients;
 public interface CrudDao {
 
     public void createNewClient(Clients client);
+
+    public void editClient(Clients client);
+
+    public void deleteClient(Clients client);
+
+    public Clients getClient(int clientId);
 }

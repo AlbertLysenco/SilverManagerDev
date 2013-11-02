@@ -18,10 +18,12 @@
                 <tr>
                     <td>Userame</td>
                     <td><input type="text" name="j_username"/></td>
+                    <td><label>Admin</label></td>
                 </tr>
                 <tr>
                     <td>Password</td>
                     <td><input type="password" name="j_password"/></td>
+                    <td><label>12345</label></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="login"/></td>

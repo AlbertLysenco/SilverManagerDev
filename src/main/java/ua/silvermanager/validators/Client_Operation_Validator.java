@@ -15,8 +15,8 @@ import ua.silvermanager.entities.Clients;
  *
  * @author artem
  */
-@Component("newClientValidator")
-public class NewClientValidator implements Validator {
+@Component("client_Operation_Validator")
+public class Client_Operation_Validator implements Validator {
 
     @Override
     public boolean supports(Class<?> type) {

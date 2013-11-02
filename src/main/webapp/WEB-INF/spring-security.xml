@@ -17,9 +17,19 @@
     <authentication-manager>
         <authentication-provider>
             <password-encoder hash="sha"/>
+            
+            <!-- If we want to get user form Data Base -->
+            
+            <!--            <jdbc-user-service  data-source-ref="spring_security_dataSource"
+           users-by-username-query="select username, password, active from users where username=?"
+           authorities-by-username-query="select u.username, ur.authority  from users u, user_roles ur
+            where u.user_id = ur.user_id and u.username =?"/>-->
+            
+            <!-- Simple example, without Data Base -->
             <user-service>
                 <user name="admin" password="8cb2237d0679ca88db6464eac60da96345513964" authorities="ROLE_ADMIN"/>
             </user-service>
+            
         </authentication-provider>
     </authentication-manager>
             

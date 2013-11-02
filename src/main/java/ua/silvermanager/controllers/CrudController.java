@@ -7,6 +7,7 @@ package ua.silvermanager.controllers;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import ua.silvermanager.dao.AdressesDao;
@@ -44,8 +46,12 @@ import ua.silvermanager.propertyEditors.StageEditos;
 public class CrudController {
 
     @Autowired
-    @Qualifier("newClientValidator")
-    private Validator newClientValidator;
+    @Qualifier("client_Operation_Validator")
+    private Validator client_Operation_Validator;
+
+//    @Autowired
+//    @Qualifier("search_Client_Validator")
+//    private Validator search_Client_Validator;
 //
 //    @Autowired
 //    @Qualifier("clientsDao")
@@ -97,16 +103,40 @@ public class CrudController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/client")
-    public ModelAndView newClient(@ModelAttribute("command") Clients client, BindingResult result, SessionStatus status) {
-        newClientValidator.validate(client, result);
+    public ModelAndView newClient(@ModelAttribute("command") Clients client, BindingResult result, SessionStatus status, @RequestParam String operation, Map<String, Object> map) {
 
-        if (result.hasErrors()) {
-            return new ModelAndView("newClient", "command", client);
+        if ("search".equals(operation)) {
+//            search_Client_Validator.validate(client, result);
+//            if (result.hasErrors()) {
+//                return new ModelAndView("newClient", "command", client);
+//            } else {
+                Clients searcheClient = crudDao.getClient(client.getClientId());
+                if (searcheClient != null) {
+                    map.put("command", searcheClient);
+                    status.setComplete();
+                }
+//            }
         } else {
-            crudDao.createNewClient(client);
-            status.setComplete();
+            client_Operation_Validator.validate(client, result);
+            if (result.hasErrors()) {
+                return new ModelAndView("newClient", "command", client);
+            } else {
+                if ("add".equals(operation)) {
+                    crudDao.createNewClient(client);
+                    map.put("command", client);
+                    status.setComplete();
+                } else if ("edit".equals(operation)) {
+                    crudDao.editClient(client);
+                    map.put("command", client);
+                } else if ("delete".equals(operation)) {
+                    crudDao.deleteClient(client);
+                    map.put("command", new Clients());
+                    status.setComplete();
+                }
+            }
         }
-        return new ModelAndView("hello");
+
+        return new ModelAndView("newClient", map);
     }
 
     @InitBinder

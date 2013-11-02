@@ -29,4 +29,24 @@ public class CrudDaoImpl implements CrudDao {
         openSession.save(client);
         openSession.close();
     }
+
+    @Override
+    public void editClient(Clients client) {
+        Session openSession = sessionFactory.openSession();
+        openSession.update(client);
+        openSession.close();
+    }
+
+    @Override
+    public void deleteClient(Clients client) {
+        Session openSession = sessionFactory.openSession();
+        openSession.delete(client);
+        openSession.close();
+    }
+
+    @Override
+    public Clients getClient(int clientId) {
+        Session openSession = sessionFactory.openSession();
+        return (Clients) openSession.get(Clients.class, clientId);
+    }
 }
