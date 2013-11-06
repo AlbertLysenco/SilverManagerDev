@@ -159,8 +159,6 @@ public class CrudController {
                     map.put("selectedStage", client.getStageId());
                     map.put("selectedManager", client.getManagerId());
                     map.put("selectedService", client.getServiceId());
-//                    map.put("selectedDateOn", client.getClientDateOn());
-//                    map.put("selectedDateOff", client.getClientDateOff());
                     map.put("command", client);
 
                     crudDao.createNewClient(client);
@@ -171,8 +169,6 @@ public class CrudController {
                     map.put("selectedStage", client.getStageId());
                     map.put("selectedManager", client.getManagerId());
                     map.put("selectedService", client.getServiceId());
-//                    map.put("selectedDateOn", client.getClientDateOn());
-//                    map.put("selectedDateOff", client.getClientDateOff());
                     map.put("command", client);
 
                     crudDao.editClient(client);
