@@ -18,7 +18,7 @@
                 <tr>
                     <td>Userame</td>
                     <td><input type="text" name="j_username"/></td>
-                    <td><label>Admin</label></td>
+                    <td><label>admin</label></td>
                 </tr>
                 <tr>
                     <td>Password</td>

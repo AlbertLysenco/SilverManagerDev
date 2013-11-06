@@ -82,13 +82,13 @@ public class Clients implements Serializable {
     @Column(name = "CLIENT_DESCRIPTION", length = 65535)
     private String clientDescription;
     @JoinColumn(name = "STAGE_ID", referencedColumnName = "STAGE_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Stages stageId;
     @JoinColumn(name = "ADRESS_ID", referencedColumnName = "ADRESS_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Adresses adressId;
     @JoinColumn(name = "SERVICE_ID", referencedColumnName = "SERVICE_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Services serviceId;
     @JoinColumn(name = "MANAGER_ID", referencedColumnName = "MANAGER_ID")
     @ManyToOne(fetch = FetchType.EAGER)

@@ -15,16 +15,16 @@ import ua.silvermanager.entities.Clients;
  *
  * @author artem
  */
-@Component("client_Operation_Validator")
-public class Client_Operation_Validator implements Validator {
+@Component("crud_Client_Validator")
+public class Crud_Client_Validator implements Validator {
 
     @Override
-    public boolean supports(Class<?> type) {
-        return Clients.class.isAssignableFrom(type);
+    public boolean supports(Class<?> clazz) {
+        return Clients.class.isAssignableFrom(clazz);
     }
 
     @Override
-    public void validate(Object o, Errors errors) {
+    public void validate(Object target, Errors errors) {
         ValidationUtils.rejectIfEmpty(errors, "clientFullName", "required.clientFullName", "Field name is required");
         ValidationUtils.rejectIfEmpty(errors, "clientDirName", "required.clientDirName", "Field name is required");
         ValidationUtils.rejectIfEmpty(errors, "adressId", "required.adressId", "Field name is required");

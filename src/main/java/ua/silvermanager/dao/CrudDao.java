@@ -17,7 +17,9 @@ public interface CrudDao {
 
     public void editClient(Clients client);
 
-    public void deleteClient(Clients client);
+    public void deleteClient(int clientId);
 
     public Clients getClient(int clientId);
+    
+    public Clients getClientByName (String name);
 }

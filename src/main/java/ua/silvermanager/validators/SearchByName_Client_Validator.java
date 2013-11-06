@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ua.silvermanager.validators;
 
 import org.springframework.stereotype.Component;
@@ -16,8 +15,8 @@ import ua.silvermanager.entities.Clients;
  *
  * @author artem
  */
-@Component("search_Client_Validator")
-public class Search_Client_Validator implements Validator{
+@Component("searchByName_Client_Validator")
+public class SearchByName_Client_Validator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
@@ -26,7 +25,6 @@ public class Search_Client_Validator implements Validator{
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmpty(errors, "clientId", "required.clientId", "Field name is required");
+        ValidationUtils.rejectIfEmpty(errors, "clientFullName", "required.clientFullName", "Field name is required");
     }
-    
 }

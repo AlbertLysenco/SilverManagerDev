@@ -7,6 +7,7 @@ package ua.silvermanager.dao;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,31 +23,68 @@ public class CrudDaoImpl implements CrudDao {
 
     @Autowired
     private SessionFactory sessionFactory;
+    private Session session;
 
     @Override
     public void createNewClient(Clients client) {
-        Session openSession = sessionFactory.openSession();
-        openSession.save(client);
-        openSession.close();
+        openSession();
+        session.save(client);
+        session.flush();
+        closeSession();
     }
 
     @Override
     public void editClient(Clients client) {
-        Session openSession = sessionFactory.openSession();
-        openSession.update(client);
-        openSession.close();
+        openSession();
+        session.update(client);
+        session.flush();
+        closeSession();
     }
 
     @Override
-    public void deleteClient(Clients client) {
-        Session openSession = sessionFactory.openSession();
-        openSession.delete(client);
-        openSession.close();
+    public void deleteClient(int clientId) {
+        openSession();
+        session.delete(getClient(clientId));
+        session.flush();
+        closeSession();
     }
 
     @Override
     public Clients getClient(int clientId) {
-        Session openSession = sessionFactory.openSession();
-        return (Clients) openSession.get(Clients.class, clientId);
+        if (session != null && session.isOpen()) {
+            return (Clients) session.get(Clients.class, clientId);
+        } else {
+            openSession();
+            Clients client = (Clients) session.get(Clients.class, clientId);
+            closeSession();
+            return client;
+        }
     }
+
+    @Override
+    public Clients getClientByName(String name) {
+        if (session != null && session.isOpen()) {
+            return (Clients) (Clients) session.createCriteria(Clients.class).
+                    add(Restrictions.eq("clientFullName", name)).list().get(0);
+        } else {
+            openSession();
+            Clients client = (Clients) session.createCriteria(Clients.class).
+                    add(Restrictions.eq("clientFullName", name)).list().get(0);
+            closeSession();
+            return client;
+        }
+    }
+
+    private void openSession() {
+        if (session == null || !session.isOpen()) {
+            session = sessionFactory.openSession();
+        }
+    }
+
+    private void closeSession() {
+        if (session != null) {
+            session.close();
+        }
+    }
+
 }

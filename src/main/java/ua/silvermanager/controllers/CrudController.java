@@ -46,12 +46,16 @@ import ua.silvermanager.propertyEditors.StageEditos;
 public class CrudController {
 
     @Autowired
-    @Qualifier("client_Operation_Validator")
-    private Validator client_Operation_Validator;
+    @Qualifier("crud_Client_Validator")
+    private Validator crud_Client_Validator;
 
-//    @Autowired
-//    @Qualifier("search_Client_Validator")
-//    private Validator search_Client_Validator;
+    @Autowired
+    @Qualifier("search_Client_Validator")
+    private Validator search_Client_Validator;
+
+    @Autowired
+    @Qualifier("searchByName_Client_Validator")
+    private Validator searchByName_Client_Validator;
 //
 //    @Autowired
 //    @Qualifier("clientsDao")
@@ -105,32 +109,79 @@ public class CrudController {
     @RequestMapping(method = RequestMethod.POST, value = "/client")
     public ModelAndView newClient(@ModelAttribute("command") Clients client, BindingResult result, SessionStatus status, @RequestParam String operation, Map<String, Object> map) {
 
-        if ("search".equals(operation)) {
-//            search_Client_Validator.validate(client, result);
-//            if (result.hasErrors()) {
-//                return new ModelAndView("newClient", "command", client);
-//            } else {
+        // If operation equals Searching Client by ID !!
+        if ("search by ID".equals(operation)) {
+            search_Client_Validator.validate(client, result);
+            if (result.hasErrors()) {
+                // If there is no ID on JSP page
+                return new ModelAndView("newClient", "command", client);
+            } else {
                 Clients searcheClient = crudDao.getClient(client.getClientId());
+                // If Client has been found !! Returnig it to user
                 if (searcheClient != null) {
+
+                    map.put("selectedAdress", searcheClient.getAdressId());
+                    map.put("selectedStage", searcheClient.getStageId());
+                    map.put("selectedManager", searcheClient.getManagerId());
+                    map.put("selectedService", searcheClient.getServiceId());
                     map.put("command", searcheClient);
+
                     status.setComplete();
                 }
-//            }
-        } else {
-            client_Operation_Validator.validate(client, result);
+            }
+        } //If operation equals Searching By Full Name
+        else if ("search by Full Name".equals(operation)) {
+            searchByName_Client_Validator.validate(client, result);
+            if (result.hasErrors()) {
+                return new ModelAndView("newClient", "command", client);
+            } else {
+                Clients searcheClient = crudDao.getClientByName(client.getClientFullName());
+                if (searcheClient != null) {
+
+                    map.put("selectedAdress", searcheClient.getAdressId());
+                    map.put("selectedStage", searcheClient.getStageId());
+                    map.put("selectedManager", searcheClient.getManagerId());
+                    map.put("selectedService", searcheClient.getServiceId());
+                    map.put("command", searcheClient);
+
+                    status.setComplete();
+                }
+            }
+        } // If operation equals ADD, EDIT or DELETE
+        else {
+            crud_Client_Validator.validate(client, result);
             if (result.hasErrors()) {
                 return new ModelAndView("newClient", "command", client);
             } else {
                 if ("add".equals(operation)) {
-                    crudDao.createNewClient(client);
+
+                    map.put("selectedAdress", client.getAdressId());
+                    map.put("selectedStage", client.getStageId());
+                    map.put("selectedManager", client.getManagerId());
+                    map.put("selectedService", client.getServiceId());
+//                    map.put("selectedDateOn", client.getClientDateOn());
+//                    map.put("selectedDateOff", client.getClientDateOff());
                     map.put("command", client);
+
+                    crudDao.createNewClient(client);
                     status.setComplete();
                 } else if ("edit".equals(operation)) {
-                    crudDao.editClient(client);
+
+                    map.put("selectedAdress", client.getAdressId());
+                    map.put("selectedStage", client.getStageId());
+                    map.put("selectedManager", client.getManagerId());
+                    map.put("selectedService", client.getServiceId());
+//                    map.put("selectedDateOn", client.getClientDateOn());
+//                    map.put("selectedDateOff", client.getClientDateOff());
                     map.put("command", client);
+
+                    crudDao.editClient(client);
+                    status.setComplete();
                 } else if ("delete".equals(operation)) {
-                    crudDao.deleteClient(client);
+
                     map.put("command", new Clients());
+
+                    crudDao.deleteClient(client.getClientId());
                     status.setComplete();
                 }
             }

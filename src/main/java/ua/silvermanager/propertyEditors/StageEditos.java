@@ -17,7 +17,7 @@ public class StageEditos extends PropertyEditorSupport {
     private final StagesDao stagesDao;
 
     public StageEditos(StagesDao dao) {
-        stagesDao = dao;
+        this.stagesDao = dao;
     }
 
     @Override

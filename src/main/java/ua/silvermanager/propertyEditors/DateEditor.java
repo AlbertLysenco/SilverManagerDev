@@ -8,6 +8,7 @@ package ua.silvermanager.propertyEditors;
 import java.beans.PropertyEditorSupport;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,10 +21,18 @@ public class DateEditor extends PropertyEditorSupport {
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
         try {
-            setValue(new SimpleDateFormat("yyyy/dd/mm").parse(text));
+            setValue(new SimpleDateFormat("yyyy-dd-mm").parse(text));
         } catch (ParseException ex) {
             Logger.getLogger(DateEditor.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public String getAsText() {
+        if (getValue() != null) {
+            return new SimpleDateFormat("yyyy-dd-mm").format((Date) getValue());
+        }
+        return "";
     }
 
 }
