@@ -38,6 +38,7 @@
                             <li><a href="${pageContext.request.contextPath}/clients">Все клиенты</a></li>
                             <li><a href="#">Добавить клиента</a></li>
                             <li><a href="#">Найти клиента</a></li>
+                            </br>
                         </ul>
                     </li>
                     <li><a href="#">Техплощадки</a>
