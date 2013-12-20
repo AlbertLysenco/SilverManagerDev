@@ -15,6 +15,8 @@
     <context:component-scan base-package="ua.silvermanager.controllers"/>
     <context:component-scan base-package="ua.silvermanager.validators"/>
     <context:component-scan base-package="ua.silvermanager.propertyEditors"/>
+    <context:component-scan base-package="ch.ralscha.extdirectspring"/>
+    <context:component-scan base-package="ua.silvermanager.direct"/>
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
