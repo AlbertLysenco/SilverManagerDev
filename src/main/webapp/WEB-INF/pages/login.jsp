@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!TEST>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
         <title>JSP Page</title>
     </head>
